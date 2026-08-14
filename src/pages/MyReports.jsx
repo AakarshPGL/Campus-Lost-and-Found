@@ -24,7 +24,7 @@ function MyReports() {
             }
 
             const response = await fetch(
-                "http://localhost:5000/api/my-reports",
+                `${import.meta.env.VITE_API_URL}/api/my-reports`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -74,7 +74,7 @@ function MyReports() {
             const token = localStorage.getItem("token")
 
             const response = await fetch(
-                `http://localhost:5000/api/items/${selectedItem._id}/resolve`,
+                `${import.meta.env.VITE_API_URL}/api/items/${selectedItem._id}/resolve`,
                 {
                     method: "PATCH",
                     headers: {
@@ -157,8 +157,8 @@ function MyReports() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45 }}
                 className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md ${resolved
-                        ? "border-stone-200 opacity-80"
-                        : "border-stone-200"
+                    ? "border-stone-200 opacity-80"
+                    : "border-stone-200"
                     }`}
             >
                 <div className="flex flex-col md:flex-row">
@@ -200,8 +200,8 @@ function MyReports() {
 
                                 <span
                                     className={`rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide ${isFound
-                                            ? "bg-emerald-50 text-emerald-600"
-                                            : "bg-red-50 text-red-600"
+                                        ? "bg-emerald-50 text-emerald-600"
+                                        : "bg-red-50 text-red-600"
                                         }`}
                                 >
                                     {item.type}

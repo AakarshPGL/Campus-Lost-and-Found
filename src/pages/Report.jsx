@@ -61,7 +61,7 @@ function Report() {
             }
 
             const response = await fetch(
-                "http://localhost:5000/api/items",
+                `${import.meta.env.VITE_API_URL}/api/items`,
                 {
                     method: "POST",
                     headers: {
@@ -129,14 +129,14 @@ function Report() {
                         animate={{ opacity: 1, y: 0, x: 0 }}
                         exit={{ opacity: 0, y: -20, x: 20 }}
                         className={`fixed right-5 top-24 z-50 flex w-[calc(100%-40px)] max-w-[360px] items-start gap-3 rounded-xl border bg-white px-5 py-4 shadow-xl ${toast.type === "success"
-                                ? "border-emerald-200"
-                                : "border-red-200"
+                            ? "border-emerald-200"
+                            : "border-red-200"
                             }`}
                     >
                         <div
                             className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${toast.type === "success"
-                                    ? "bg-emerald-100 text-emerald-600"
-                                    : "bg-red-100 text-red-600"
+                                ? "bg-emerald-100 text-emerald-600"
+                                : "bg-red-100 text-red-600"
                                 }`}
                         >
                             {toast.type === "success" ? "✓" : "!"}
@@ -218,8 +218,8 @@ function Report() {
                                     }))
                                 }
                                 className={`rounded-xl border p-5 text-left transition-all duration-200 ${formData.type === "Lost"
-                                        ? "border-blue-500 bg-blue-50 shadow-sm"
-                                        : "border-stone-200 hover:border-stone-400 hover:bg-stone-50"
+                                    ? "border-blue-500 bg-blue-50 shadow-sm"
+                                    : "border-stone-200 hover:border-stone-400 hover:bg-stone-50"
                                     }`}
                             >
                                 <p className="text-[16px] font-semibold text-[#171717]">
@@ -241,8 +241,8 @@ function Report() {
                                     }))
                                 }
                                 className={`rounded-xl border p-5 text-left transition-all duration-200 ${formData.type === "Found"
-                                        ? "border-emerald-500 bg-emerald-50 shadow-sm"
-                                        : "border-stone-200 hover:border-stone-400 hover:bg-stone-50"
+                                    ? "border-emerald-500 bg-emerald-50 shadow-sm"
+                                    : "border-stone-200 hover:border-stone-400 hover:bg-stone-50"
                                     }`}
                             >
                                 <p className="text-[16px] font-semibold text-[#171717]">

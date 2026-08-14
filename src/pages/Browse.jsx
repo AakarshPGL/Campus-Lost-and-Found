@@ -18,7 +18,7 @@ function Browse() {
         async function fetchItems() {
             try {
                 const response = await fetch(
-                    "http://localhost:5000/api/items"
+                    `${import.meta.env.VITE_API_URL}/api/items`
                 )
 
                 const data = await response.json()
@@ -123,8 +123,8 @@ function Browse() {
                             type="button"
                             onClick={() => setFilter(option)}
                             className={`rounded-lg px-5 py-2.5 text-[15px] font-medium transition-all duration-200 ${filter === option
-                                    ? "bg-[#171717] text-white shadow-sm"
-                                    : "border border-stone-300 bg-white/70 text-stone-600 hover:bg-white hover:text-[#171717]"
+                                ? "bg-[#171717] text-white shadow-sm"
+                                : "border border-stone-300 bg-white/70 text-stone-600 hover:bg-white hover:text-[#171717]"
                                 }`}
                         >
                             {option}
