@@ -3,16 +3,38 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
-
+import MyReports from "./pages/MyReports"
 import Home from "./pages/Home"
 import Browse from "./pages/Browse"
 import Report from "./pages/Report"
 import Login from "./pages/Login"
 import ItemDetails from "./pages/ItemDetails"
 import Register from "./pages/Register"
+
+
+function ProtectedReport() {
+  const location = useLocation()
+
+  const token = localStorage.getItem("token")
+
+  if (!token) {
+    return (
+      <Navigate
+        to="/login"
+        replace
+        state={{
+          backgroundLocation: location,
+        }}
+      />
+    )
+  }
+
+  return <Report />
+}
 
 
 function AppContent() {
@@ -43,9 +65,12 @@ function AppContent() {
 
         <Route
           path="/report"
-          element={<Report />}
+          element={<ProtectedReport />}
         />
-
+        <Route
+          path="/my-reports"
+          element={<MyReports />}
+        />
         <Route
           path="/login"
           element={<Login />}
@@ -62,6 +87,7 @@ function AppContent() {
         />
 
       </Routes>
+
 
       {/* Authentication modals */}
 
@@ -93,6 +119,5 @@ function App() {
     </BrowserRouter>
   )
 }
-
 
 export default App

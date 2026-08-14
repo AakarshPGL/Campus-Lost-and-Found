@@ -33,9 +33,24 @@ const itemSchema = new mongoose.Schema(
             type: Date,
             required: true,
         },
+
         imageUrl: {
             type: String,
             default: "",
+        },
+
+        // User who created the report
+        reportedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        },
+
+        // Report lifecycle
+        status: {
+            type: String,
+            enum: ["Active", "Resolved"],
+            default: "Active",
         },
     },
     {
